@@ -8,7 +8,6 @@ public class DoorDetector implements Alarm{
         activeSirenDoor = true;
         System.out.println("Inbrottslarm och siren har aktiverats.");
         System.out.println("PIIPP PIIPP");
-
     }
 
     @Override
@@ -16,7 +15,6 @@ public class DoorDetector implements Alarm{
         isActive = false;
         activeSirenDoor = false;
         System.out.println("Inbrottslarm och siren är avaktiverat.");
-
     }
 
     @Override

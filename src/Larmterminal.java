@@ -30,7 +30,8 @@ public class Larmterminal {
             int choice = scanner.nextInt() - 1;
         if (choice >= 0 && choice < larmLista.size()) {
             Alarm chosenAlarm = larmLista.get(choice);
-            System.out.println("Simulerar larm: " + chosenAlarm.getLarmType() + " i " + roomChoice.getName());chosenAlarm.activate();
+            System.out.println("Simulerar larm: " + chosenAlarm.getLarmType() + " i " + roomChoice.getName());
+            chosenAlarm.activate();
         } else {
             System.out.println("Ogiltigt val. Försök igen.");
             }

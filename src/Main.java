@@ -5,6 +5,5 @@ public class Main {
 
     Larmterminal larmterminal = new Larmterminal();
     larmterminal.showMenu();
-
     }
 }

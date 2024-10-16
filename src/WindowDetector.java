@@ -8,7 +8,6 @@ public class WindowDetector implements Alarm{
         activeSirenWindow = true;
         System.out.println("Inbrottslarm och siren har aktiverats.");
         System.out.println("PIIPP PIIPP");
-
     }
 
     @Override
@@ -16,7 +15,6 @@ public class WindowDetector implements Alarm{
         isActive = false;
         activeSirenWindow = false;
         System.out.println("Inbrottslarm och siren är avaktiverat.");
-
     }
 
     @Override

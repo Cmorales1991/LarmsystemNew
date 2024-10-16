@@ -1,12 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Room {
     private String name;
     private List<Alarm> larmLista;
-
     protected static List<Room> rooms = new ArrayList<>();
 
+    public Room() {
+    }
     public Room(String name) {
         this.name = name;
         this.larmLista = new ArrayList<>();
@@ -28,8 +30,8 @@ public class Room {
     public void activeAllAlarm() {
         for (Alarm alarm : larmLista) {
             alarm.activate();
-        }
-    }
+                }
+            }
 
     public void deactiveAllAlarm() {
         for (Alarm alarm : larmLista) {
@@ -41,6 +43,7 @@ public class Room {
             room.activeAllAlarm();
         }
         System.out.println("Alla larm har aktiverats.");
+
     }
 
     public static void deactiveAllAlarms() {
@@ -101,5 +104,13 @@ public class Room {
             Room room = rooms.get(i);
             System.out.println((i + 1) + ". " + room.getName());
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "name='" + name + '\'' +
+                ", larmLista=" + larmLista +
+                '}';
     }
 }
