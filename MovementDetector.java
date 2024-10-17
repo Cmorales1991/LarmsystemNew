@@ -2,12 +2,15 @@ public class MovementDetector implements Alarm{
     private boolean isActive = false;
     private boolean activeSirenMove = false;
     private boolean activeCamera = false;
+    private boolean active = false;
+
 
     @Override
     public void activate() {
-        isActive = true;
-        activeSirenMove = true;
-        activeCamera = true;
+        this.active = true;
+        this.isActive = true;
+        this.activeSirenMove = true;
+        this.activeCamera = true;
         System.out.println("Rörlelselarm med siren och kamera inspelning aktiverat.");
         System.out.println("PIIPP PIIPP");
 
@@ -15,15 +18,16 @@ public class MovementDetector implements Alarm{
 
     @Override
     public void deactivate() {
-        isActive = false;
-        activeSirenMove = false;
-        activeCamera = false;
+        this.active = false;
+        this.isActive = false;
+        this.activeSirenMove = false;
+        this.activeCamera = false;
         System.out.println("Rörlelselarm med siren och kamera inspelning avaktiverat.");
     }
 
     @Override
     public boolean isActive() {
-        return false;
+        return this.active = false;
     }
 
     @Override

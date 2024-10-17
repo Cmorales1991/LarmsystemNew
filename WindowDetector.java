@@ -1,11 +1,14 @@
 public class WindowDetector implements Alarm{
     private boolean isActive = false;
     private boolean activeSirenWindow = false;
+    private boolean active = false;
+
 
     @Override
     public void activate() {
-        isActive = true;
-        activeSirenWindow = true;
+        this.active = true;
+        this.isActive = true;
+        this.activeSirenWindow = true;
         System.out.println("Inbrottslarm och siren har aktiverats.");
         System.out.println("PIIPP PIIPP");
 
@@ -13,15 +16,16 @@ public class WindowDetector implements Alarm{
 
     @Override
     public void deactivate() {
-        isActive = false;
-        activeSirenWindow = false;
+        this.active = false;
+        this.isActive = false;
+        this.activeSirenWindow = false;
         System.out.println("Inbrottslarm och siren är avaktiverat.");
 
     }
 
     @Override
     public boolean isActive() {
-        return false;
+        return this.active = false;
     }
 
     @Override

@@ -1,11 +1,13 @@
 public class DoorDetector implements Alarm{
     private boolean isActive = false;
     private boolean activeSirenDoor = false;
+    private boolean active = false;
 
     @Override
     public void activate() {
-        isActive = true;
-        activeSirenDoor = true;
+        this.active = true;
+        this.isActive = true;
+        this.activeSirenDoor = true;
         System.out.println("Inbrottslarm och siren har aktiverats.");
         System.out.println("PIIPP PIIPP");
 
@@ -13,15 +15,15 @@ public class DoorDetector implements Alarm{
 
     @Override
     public void deactivate() {
-        isActive = false;
-        activeSirenDoor = false;
+        this.isActive = false;
+        this.activeSirenDoor = false;
         System.out.println("Inbrottslarm och siren är avaktiverat.");
 
     }
 
     @Override
     public boolean isActive() {
-        return false;
+        return this.active= false;
     }
 
     @Override

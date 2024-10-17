@@ -4,57 +4,77 @@ import java.util.List;
 public class Room {
     private String name;
     private List<Alarm> larmLista;
-
     protected static List<Room> rooms = new ArrayList<>();
+    protected List<Alarm> roomAlarms = new ArrayList<>();
+    protected boolean alarmsActive = false;
+
 
     public Room(String name) {
         this.name = name;
         this.larmLista = new ArrayList<>();
         rooms.add(this);
+        this.alarmsActive = false;
+
     }
 
     public void addLarm(Alarm alarm) {
         larmLista.add(alarm);
+        roomAlarms.add(alarm);
     }
 
     public List<Alarm> getAllAlarms() {
         return larmLista;
     }
 
+    public List<Alarm> getRoomAlarms() {
+        return roomAlarms;
+    }
+
+
     public String getName() {
         return name;
     }
 
-    public void activeAllAlarm() {
-        for (Alarm alarm : larmLista) {
+    public void activateAllAlarms() {
+        for (Alarm alarm : roomAlarms) {
             alarm.activate();
         }
     }
 
-    public void deactiveAllAlarm() {
-        for (Alarm alarm : larmLista) {
+    public void deactivateAllAlarms() {
+        for (Alarm alarm : roomAlarms) {
             alarm.deactivate();
         }
     }
+
     public static void activeAllAlarms() {
         for (Room room : rooms) {
-            room.activeAllAlarm();
+            room.activateAllAlarms();
         }
         System.out.println("Alla larm har aktiverats.");
     }
 
     public static void deactiveAllAlarms() {
         for (Room room : rooms) {
-            room.deactiveAllAlarm();
+            room.deactivateAllAlarms();
         }
         System.out.println("Alla larm har avaktiverats.");
     }
 
     public static void restoreAlarms() {
         for (Room room : rooms) {
-            room.deactiveAllAlarm();
+            room.deactivateAllAlarms();
         }
         System.out.println("Alla larm har återställts.");
+    }
+
+    public boolean areAlarmsActive() {
+        for (Alarm alarm : roomAlarms) {
+            if (alarm.isActive()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void createRooms() {
@@ -96,10 +116,17 @@ public class Room {
             System.out.println("Inga rum är skapade.");
             return;
         }
-
-        for (int i = 0; i < rooms.size(); i++) {
-            Room room = rooms.get(i);
-            System.out.println((i + 1) + ". " + room.getName());
+        for (Room room : rooms) {
+            System.out.println("Rum: " + room.getName());
+            System.out.println("Detektorer:");
+            if (room.getRoomAlarms().isEmpty()) {
+                System.out.println("  Inga larm installerade.");
+            } else {
+                for (Alarm alarm : room.getRoomAlarms()) {
+                    System.out.println("  - " + alarm.getLarmType());
+                }
+            }
         }
     }
+
 }
